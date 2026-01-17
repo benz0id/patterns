@@ -1,18 +1,20 @@
-from patts import Rain, BubbleSort
+from patts import Rain, Sorter, GameOfLife
 from board_init import DisplayAdapter
 from receiver import Receiver
 from time import sleep
 display = DisplayAdapter()
 
-run = False
+run = True
 
 rain = Rain(display)
-sort = BubbleSort(display)
+sort = Sorter(display)
+gol = GameOfLife(display)
 
 if run:
     while True:
-        rain.run(30)
-        sort.run(30)
+        rain.run(60)
+        sort.run(60)
+        gol.run(t=60, density=0.12, stagnation_limit=20, color=(265, 265, 265))
 else:
     rain.clear()
     rain.show()
